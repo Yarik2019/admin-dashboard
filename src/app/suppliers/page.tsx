@@ -1,24 +1,24 @@
 "use client";
+import PrivateRoute from "@/components/PrivateRoute/PrivateRoute";
+
 import BreadcrumbCollapsed from "@/components/Breadcrumb/Breadcrumb";
 import { usePathname } from "next/navigation";
-import Dashboard from "@/components/Dashboard/Dashboard";
-const DashboardPage = () => {
+const SuppliersPage = () => {
   const pathname = usePathname();
   const breadcrumbItems = [
     { title: "Суперзірки ", to: pathname },
     { title: "Олександр", to: `${pathname}/alexander-usyk` },
   ];
-
   return (
-    <div className="">
-      <div className="px-4 py-0 lg:py-1">
-        <BreadcrumbCollapsed items={breadcrumbItems} />
+    <PrivateRoute>
+      <div className="">
+        <div className="px-4 py-0 lg:py-1">
+          <BreadcrumbCollapsed items={breadcrumbItems} />
+        </div>
+        <h1>Suppliers</h1>
       </div>
-      <div className="mx-auto">
-        <Dashboard />
-      </div>
-    </div>
+    </PrivateRoute>
   );
 };
 
-export default DashboardPage;
+export default SuppliersPage;
